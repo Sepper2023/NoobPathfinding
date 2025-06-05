@@ -26,8 +26,8 @@ SOFTWARE.
 
 ]]
 
-local Path = require(script:WaitForChild("Path"))
-local GS = require(script:WaitForChild("GoodSignal"))
+local Path = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sepper2023/NoobPathfinding/refs/heads/main/Path"))()
+local GS = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sepper2023/NoobPathfinding/refs/heads/main/GoodSignal"))()
 local RS = game:GetService("RunService")
 
 local module = {}
