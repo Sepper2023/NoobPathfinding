@@ -66,7 +66,7 @@ if not VisualFolder then
 	VisualFolder.Parent = workspace
 end
 
-local NoobPath = script.Parent
+local NoobPath = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sepper2023/NoobPathfinding/refs/heads/main/NoobPath"))()
 
 -- Visualize the given Route
 function Path:Show(Route)
