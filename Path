@@ -66,54 +66,24 @@ if not VisualFolder then
 	VisualFolder.Parent = workspace
 end
 
-local NoobPath = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sepper2023/NoobPathfinding/refs/heads/main/NoobPath"))()
-
 -- Visualize the given Route
 function Path:Show(Route)
 	self:Hide()
 	local Visual = self.Visual
 
-	if NoobPath:GetAttribute("GraphPath") then
-		for i = 1, #Route - 1 do
-			local Waypoint = Route[i]
-			local Position = Waypoint.Position
+	for i = 1, #Route - 1 do
+		local Waypoint = Route[i]
+		local Position = Waypoint.Position
 
-			local Point = VisualWaypoint:Clone()
-			Point.Position = Position
+		local Point = VisualWaypoint:Clone()
+		Point.Position = Position
 
-			if Waypoint.Action == Enum.PathWaypointAction.Jump then
-				Point.BrickColor = BrickColor.new("Bright yellow")
-			end
-
-			Point.Parent = VisualFolder
-			Visual[i] = Point
-
-			local Direction = Route[i + 1].Position - Position
-
-			local Line = Instance.new("LineHandleAdornment")
-			Line.Parent = Point
-			Line.Adornee = Point
-			Line.CFrame = CFrame.new(Vector3.new(0, 0, 0), Direction)
-			Line.Length = Direction.Magnitude
-			Line.Color3 = BrickColor.new("Bright blue").Color
-
-			Line.Thickness = 3
+		if Waypoint.Action == Enum.PathWaypointAction.Jump then
+			Point.BrickColor = BrickColor.new("Bright yellow")
 		end
-	else
-		for i = 1, #Route - 1 do
-			local Waypoint = Route[i]
-			local Position = Waypoint.Position
 
-			local Point = VisualWaypoint:Clone()
-			Point.Position = Position
-
-			if Waypoint.Action == Enum.PathWaypointAction.Jump then
-				Point.BrickColor = BrickColor.new("Bright yellow")
-			end
-
-			Point.Parent = VisualFolder
-			Visual[i] = Point
-		end
+		Point.Parent = VisualFolder
+		Visual[i] = Point
 	end
 
 	local LastWaypoint = Route[#Route]
